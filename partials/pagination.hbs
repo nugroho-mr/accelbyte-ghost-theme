@@ -1,0 +1,28 @@
+<nav class="pagination flex justify-center items-center space-x-2" role="navigation">
+    
+    <a class="h-8 flex px-3 justify-center items-center rounded text-alt {{#unless prev}}invisible{{/unless}}" href="{{page_url prev}}"><i class='bx bx-chevron-left'></i></a>
+    <div class="page-nums inline-flex items-center space-x-2">
+        {{!-- <a href="" class="current">{{page}}</a>
+        <a href="">1</a> --}}
+    </div>
+    <a class="h-8 flex px-3 justify-center items-center rounded text-alt  {{#unless next}}invisible{{/unless}}" href="{{page_url next}}"><i class='bx bx-chevron-right'></i></a>
+</nav>
+
+<script>
+    var pageTotal = parseInt("{{pages}}"),
+        pageCurrent = parseInt("{{page}}"),
+        page = 1,
+        pageNums = document.querySelector('.pagination .page-nums');
+
+    for(i = 1; i <= pageTotal; i++) {
+
+        if(page === pageCurrent) {
+            pageNums.innerHTML += '<a class="h-8 flex px-3 justify-center items-center rounded active text-alt" href="{{page_url}}page/{{page}}">{{page}}</a>';
+        }
+        else {
+            pageNums.innerHTML += '<a class="h-8 flex px-3 justify-center items-center rounded text-alt" href="{{page_url}}page/' + page + '">'  + page + '</a>'
+        }
+        page++;
+    }
+
+</script>

@@ -1,0 +1,13 @@
+{{#get "posts" filter="featured:true" limit="all" include="authors,tags" }}
+    {{#if posts.length}}
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {{#foreach posts limit="4"}}
+                {{#if @index}}
+                    {{> "card" vertical=true}} {{!-- partials/card.hbs --}} 
+                {{else}}
+                    <div class="md:col-span-3">{{> "card" highlight=true }}</div>              
+                {{/if}}
+            {{/foreach}}
+        </div>
+    {{/if}}
+{{/get}}

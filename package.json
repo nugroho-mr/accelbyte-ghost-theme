@@ -1,6 +1,6 @@
 {
-    "name": "ghost-starter-theme",
-    "description": "A custom theme for ghost",
+    "name": "accelbyte-blog-dummy-theme",
+    "description": "A custom theme for accelbyte dummy blog",
     "demo": "https://starter.ghost.io",
     "version": "1.0.0",
     "engines": {
@@ -21,15 +21,14 @@
         "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "Panca Satrio Nugroho",
+        "email": "nugroho.panca@gmail.com",
+        "url": "https://pancanugroho.com"
     },
     "gpm": {
         "type": "theme",
         "categories": [
-            "Minimal",
-            "Magazine"
+            "Minimal"
         ]
     },
     "keywords": [
@@ -39,9 +38,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Starter.git"
+        "url": "https://github.com/nugroho-mr/accelbyte-ghost-theme"
     },
-    "bugs": "https://github.com/TryGhost/Starter/issues",
+    "bugs": "https://github.com/nugroho-mr/accelbyte-ghost-theme/issues",
     "contributors": "https://github.com/TryGhost/Starter/graphs/contributors",
     "devDependencies": {
         "autoprefixer": "10.4.0",
@@ -64,7 +63,7 @@
         "defaults"
     ],
     "config": {
-        "posts_per_page": 15,
+        "posts_per_page": 2,
         "image_sizes": {
             "xxs": {
                 "width": 30
@@ -85,5 +84,9 @@
                 "width": 2000
             }
         }
+    },
+    "dependencies": {
+        "postcss-nested": "^5.0.6",
+        "tailwindcss": "^2.2.19"
     }
 }

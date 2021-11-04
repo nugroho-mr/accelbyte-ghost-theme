@@ -1,3 +1,4 @@
+const tailwind = require('tailwindcss');
 const {series, watch, src, dest, parallel} = require('gulp');
 const pump = require('pump');
 
@@ -10,6 +11,7 @@ var beeper = require('beeper');
 
 // postcss plugins
 var autoprefixer = require('autoprefixer');
+var postcssNested = require('postcss-nested');
 var colorFunction = require('postcss-color-mod-function');
 var cssnano = require('cssnano');
 var easyimport = require('postcss-easy-import');
@@ -39,6 +41,8 @@ function css(done) {
     var processors = [
         easyimport,
         colorFunction(),
+        postcssNested(),
+        tailwind(),
         autoprefixer(),
         cssnano()
     ];

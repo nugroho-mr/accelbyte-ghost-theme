@@ -1,0 +1,5 @@
+<div class="flex space-x-9 text-sm">
+    {{#foreach navigation}}
+        <div class="{{#if current}} active{{/if}}"><a href="{{url absolute="true"}}" class="uppercase block py-2">{{label}}</a></div>
+    {{/foreach}}                    
+</div>

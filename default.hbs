@@ -5,6 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
     <title>{{meta_title}}</title>
@@ -14,99 +19,106 @@
 
 </head>
 <body class="{{body_class}}">
-<div class="gh-viewport">
 
-<header id="gh-head" class="gh-head">
-    <nav class="gh-head-inner gh-container">
-
-        <div class="gh-head-brand">
-            <a class="gh-head-logo" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
-            <a class="gh-burger" role="button">
-                <div class="gh-burger-box">
-                    <div class="gh-burger-inner"></div>
+    <header x-data="{ mobileMenuOpen: false }" class="bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between py-3 items-center">
+                <div>
+                    <a href="{{@site.url}}">
+                        {{#if @site.logo}}
+                            <img  src="{{@site.logo}}" alt="{{@site.title}}" class="h-11 w-auto" />
+                        {{else}}
+                            <h1 class="text-4xl">{{@site.title}}</h1>
+                        {{/if}}
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="gh-head-menu">
-            {{navigation}}
-        </div>
-        <div class="gh-head-actions">
-            <div class="gh-head-actions-list">
-                {{#if @site.facebook}}
-                <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                {{/if}}
-                {{#if @site.twitter}}
-                <a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                {{/if}}
-                <a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
+                <div class="hidden lg:block">
+                    {{navigation}}
+                </div>
             </div>
         </div>
-    </nav>
-</header>
+    </header>
 
-<main class="gh-main">
+    <main>
+        {{{body}}}
+    </main>
 
-    {{{body}}}
-    {{!-- All content gets inserted here, index.hbs, post.hbs, etc --}}
-
-</main>
-
-<footer class="gh-foot">
-    <div class="gh-container">
-        <div class="gh-foot-menu">
-            {{navigation}}
+    <footer class="bg-white">
+        <div class="container px-4 md:px-8 mx-auto">
+            <div class="py-8 border-b border-solid border-lines ">
+                <div class="flex flex-col items-center md:flex-row md:items-center md:justify-between">
+                    <div class="mb-4 md:mb-0">
+                        {{#if @site.logo}}
+                            <img  src="{{@site.logo}}" alt="{{@site.title}}"/>
+                        {{else}}
+                            <h1 class="text-4xl">{{@site.title}}</h1>
+                        {{/if}}
+                    </div>
+                    <div class="flex space-x-5 justify-center text-xl">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-alt"><i class="bx bxl-facebook-circle"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-alt"><i class="bx bxl-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-alt"><i class="bx bxl-linkedin"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-alt"><i class="bx bxl-youtube"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-alt"><i class="bx bxl-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="py-8 border-b border-solid border-lines">
+                <div class="flex flex-col text-center space-y-8 md:flex-row md:flex-wrap md:-mx-6 md:space-y-0 md:justify-between lg:mx-0 lg:flex-nowrap lg:space-x-12 lg:text-left">
+                    <div class="md:px-6 md:flex-grow-1 md:mb-12 md:w-full lg:w-auto lg:flex-auto lg:px-0 lg:mb-0" >
+                        <h6 class="uppercase font-bold mb-4 text-xs">Products</h6>
+                        <ul class="footer-menu footer-menu--columned">
+                            <li><a href="#">User Account Management</a></li>
+                            <li><a href="#">Commerce</a></li>
+                            <li><a href="#">Profile, Stats &amp; Cloud Save</a></li>
+                            <li><a href="#">Lobby &amp; Matchmaking</a></li>
+                            <li><a href="#">Social</a></li>
+                            <li><a href="#">Game Telemetry &amp; Analytics</a></li>
+                            <li><a href="#">Player Portal, Launcher &amp; Patcher</a></li>
+                            <li><a href="#">Augment</a></li>
+                            <li><a href="#">Armada</a></li>
+                            <li><a href="#">BlackBox</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:px-6 md:flex-grow-1 md:w-1/3 lg:w-auto lg:flex-auto lg:px-0">
+                        <h6 class="uppercase font-bold mb-4 text-xs">Developers</h6>
+                        <ul class="footer-menu">
+                            <li><a href="#">AccelByte Cloud Docs</a></li>
+                            <li><a href="#">API Reference</a></li>
+                            <li><a href="#">SDKs</a></li>
+                            <li><a href="#">BlackBox Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:px-6 md:flex-grow-1 md:w-1/3 lg:w-auto lg:flex-auto lg:px-0">
+                        <h6 class="uppercase font-bold mb-4 text-xs">Company</h6>
+                        <ul class="footer-menu">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Request A Demo</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Client Stories</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:px-6 md:flex-grow-1 md:w-1/3 lg:w-auto lg:flex-auto lg:px-0">
+                        <h6 class="uppercase font-bold mb-4 text-xs">Blog</h6>
+                        <ul class="footer-menu">
+                            <li><a href="#">Company Updates</a></li>
+                            <li><a href="#">Engineering Insights</a></li>
+                            <li><a href="#">Guides and Tutorials</a></li>
+                            <li><a href="#">Product Updates</a></li>
+                            <li><a href="#">Staff Opinion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="py-8">
+                <div class="flex flex-col space-y-4 text-xs items-center md:flex-row md:space-y-0 md:justify-between">
+                    <p>Contact us on <a href="mailto:hello@accelbyte.io" class="text-blue-400 hover:underline">hello@accelbyte.io</a></p>
+                    <p>Copyright &copy; AccelByte 2021</p>
+                </div>
+            </div>
         </div>
-        <div class="gh-foot-meta">
-            Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-        </div>
-    </div>
-</footer>
-
-</div>
-
-{{!-- <foot> --}}
-
-<script src="{{asset "built/jquery-3.4.1.min.js"}}"></script>
-
-{{#if pagination.pages}}
-<script>
-    var maxPages = parseInt('{{pagination.pages}}');
-</script>
-<script src="{{asset "built/infinitescroll.js"}}"></script>
-{{/if}}
-
-<script>
-$(document).ready(function () {
-    // Mobile Menu Trigger
-    $('.gh-burger').click(function () {
-        $('body').toggleClass('gh-head-open');
-    });
-});
-</script>
-
-{{#is "post, page"}}
-<script src="{{asset "built/jquery.fitvids.js"}}"></script>
-<script>
-var images = document.querySelectorAll('.kg-gallery-image img');
-images.forEach(function (image) {
-    var container = image.closest('.kg-gallery-image');
-    var width = image.attributes.width.value;
-    var height = image.attributes.height.value;
-    var ratio = width / height;
-    container.style.flex = ratio + ' 1 0%';
-});
-$(document).ready(function () {
-    var $postContent = $(".gh-content");
-    $postContent.fitVids();
-});
-</script>
-{{/is}}
+    </footer>
 
 {{ghost_foot}}
 {{!-- Outputs important scripts - should always be included before closing body tag --}}
