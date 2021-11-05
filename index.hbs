@@ -1,10 +1,13 @@
 {{!< default}}
 
 <section>
-    <div class="container mx-auto px-4 py-10 md:px-8">
-        <div class="flex justify-between">
-            <div><h3 class="section__title">Featured News</h3></div>
-            <div><h3 class="section__title"><i class='bx bx-search'></i></h3></div>
+    <div class="container mx-auto px-4 py-10 md:px-8" x-data="{ searchOpen: false }">
+        <div class="flex flex-col mb-4 md:flex-row md:justify-between">
+            <div class="relative mb-2 md:order-2">
+                <input :class=" searchOpen ? 'md:block' : 'md:hidden' " type="text" class="h-12 bg-white border-0 border-solid border-gray-300 rounded-xl pl-3 pr-12 z-0 relative w-full md:w-64" placeholder="Search..." />
+                <h3 class="text-xl absolute z-10 top-1/2 right-2 transform -translate-y-1/2 text-gray-500 pointer-events-none leading-none md:pointer-events-auto" role="button" aria-label="Open search box" @click="searchOpen = !searchOpen"><i :class=" searchOpen ? 'bx-x' : 'bx-search' " class='bx mt-1 md:mt-0'></i></h3>
+            </div>
+            <div class="md:order-1"><h3 class="section__title mb-0">Featured News</h3></div>
         </div>
         {{> "featured"}}
     </div>

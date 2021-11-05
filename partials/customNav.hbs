@@ -1,0 +1,18 @@
+<div class="flex {{#if mobile}}h-full flex-col space-y-4 justify-center items-center mobile-menu overflow-y-auto{{else}}space-x-9 text-sm{{/if}}">
+    <div><a href="#" class="uppercase block py-2">One Stop Shop</a></div>
+    <div><a href="#" class="uppercase block py-2">Solutions</a></div>
+    <div><a href="#" class="uppercase block py-2">Principles</a></div>
+    <div><a href="#" class="uppercase block py-2">Pricing</a></div>
+    <div><a href="#" class="uppercase block py-2">Careers</a></div>
+    <div class="active"><a href="#" class="uppercase block py-2">Blog</a></div>
+    <div class="{{#if mobile}}flex flex-col items-center{{else}}relative group{{/if}}">
+        <a class="uppercase block py-2 pointer-event-none">Docs</a>
+        <div class="{{#unless mobile}}bg-white border-lines border border-solid absolute right-0 top-full w-auto whitespace-nowrap hidden last:border-b-0 group-hover:block{{else}}flex flex-col items-center{{/unless}}">
+            <a href="#" class="block border-solid border-lines font-bold py-2 px-4 leading-none {{#unless mobile}}border-b{{/unless}}">Company Updates</a>
+            <a href="#" class="block border-solid border-lines font-bold py-2 px-4 leading-none {{#unless mobile}}border-b{{/unless}}">Engineering Insights</a>
+            <a href="#" class="block border-solid border-lines font-bold py-2 px-4 leading-none {{#unless mobile}}border-b{{/unless}}">Guides &amp; Tutorials</a>
+            <a href="#" class="block border-solid border-lines font-bold py-2 px-4 leading-none {{#unless mobile}}border-b{{/unless}}">Product Updates</a>
+            <a href="#" class="block border-solid border-lines font-bold py-2 px-4 leading-none {{#unless mobile}}border-b{{/unless}}">Staff Opinion</a>
+        </div>
+    </div>
+</div>

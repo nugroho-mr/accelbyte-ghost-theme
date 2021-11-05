@@ -12,6 +12,8 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
+    <script src="//unpkg.com/alpinejs" defer></script>
+    
     <title>{{meta_title}}</title>
 
     {{ghost_head}}
@@ -20,26 +22,35 @@
 </head>
 <body class="{{body_class}}">
 
-    <header x-data="{ mobileMenuOpen: false }" class="bg-white">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="flex justify-between py-3 items-center">
-                <div>
-                    <a href="{{@site.url}}">
-                        {{#if @site.logo}}
-                            <img  src="{{@site.logo}}" alt="{{@site.title}}" class="h-11 w-auto" />
-                        {{else}}
-                            <h1 class="text-4xl">{{@site.title}}</h1>
-                        {{/if}}
-                    </a>
-                </div>
-                <div class="hidden lg:block">
-                    {{navigation}}
+    
+    <header x-data="{ mobileMenuOpen: false }" class="bg-white fixed z-30 left-0 right-0 top-0 lg:relative">
+        <div class="fixed inset-0 bg-white z-30 p-8 pt-24 transform transition-all duration-300" :class=" mobileMenuOpen ? 'translate-y-0' : '-translate-y-full' ">
+            {{> "customNav" mobile=true}}
+        </div>
+        <div class="relative z-30 bg-white">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex justify-between py-3 items-center">
+                    <div>
+                        <a href="{{@site.url}}">
+                            {{#if @site.logo}}
+                                <img  src="{{@site.logo}}" alt="{{@site.title}}" class="h-11 w-auto" />
+                            {{else}}
+                                <h1 class="text-4xl">{{@site.title}}</h1>
+                            {{/if}}
+                        </a>
+                    </div>
+                    <div class="hidden lg:block">
+                        {{> "customNav"}}
+                    </div>
+                    <div class="lg:hidden">
+                        <button @click="mobileMenuOpen = !mobileMenuOpen"><i class='bx text-xl' :class=" mobileMenuOpen ? 'bx-x' : 'bx-menu-alt-right ' "></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main>
+    <main class="mt-16 lg:mt-0">
         {{{body}}}
     </main>
 
